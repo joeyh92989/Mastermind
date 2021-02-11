@@ -4,3 +4,4 @@ require './lib/game'
 #start
 
 start = Game.new()
+start
