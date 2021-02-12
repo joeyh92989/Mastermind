@@ -34,4 +34,13 @@ class Messages
   def guess_too_long_message
     print "\n\n\n Your guess is too long.\n\n Your guess must be 4 elements.\n\n Each element may be used more than once.\n\n Guess again.\n\n#{}\n\n\n "
   end
+
+  def feedback_msg
+    print "\n\n\n  \n\n\n"
+  end
+
+  def correct_guess_msg
+    print "\n\n\n #{} has #{} of the correct elements with #{} in the correct positions\n You've guessed #{} times \n\n\n "
+  end
+
 end
