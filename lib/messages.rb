@@ -1,5 +1,6 @@
 class Messages
   def initialize
+    
   end
 
   def welcome_msg
@@ -38,9 +39,10 @@ class Messages
   def feedback_msg
     print "\n\n\n  \n\n\n"
   end
+  require "pry"; binding.pry
 
-  def correct_guess_msg
-    print "\n\n\n #{} has #{} of the correct elements with #{} in the correct positions\n You've guessed #{} times \n\n\n "
-  end
+  # def correct_guess_msg
+  #   print "\n\n\n #{} has #{} of the correct elements with #{} in the correct positions\n You've guessed #{} times \n\n\n "
+  # end
 
 end
