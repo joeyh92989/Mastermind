@@ -13,17 +13,15 @@ class GameTest < MiniTest::Test
     assert_instance_of Game, game
 
   end
+  def test_can_initialize_codemaker
+    game =Game.new
+    game.initialize_codemaker
 
-  def test_it_has_codes
-    game= Game.new()
-    game.code
-    game.code_string
+    #require 'pry'; binding.pry
     assert_equal 4, game.code.length
     assert_equal game.code.join, game.code_string
   end
-  def test_it_can_initialize_messages
-    game= Game.new
+  def method_name
 
-    require 'pry'; binding.pry
   end
 end

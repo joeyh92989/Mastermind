@@ -1,13 +1,25 @@
 class Game
 
   attr_reader :code,
-              :code_string
+              :code_string,
+              :messages
   def initialize ()
-    @messages = Messages.new
-    @codemaker_instance = CodeMaker.new
-    intialized_code = @codemaker_instance.create_code
-    intialized_code_string = @codemaker_instance.code_string
-    @code = intialized_code
-    @code_string = intialized_code_string
+    @messages = ()
+    @codemaker_instance = ()
+    @code = []
+    @code_string = ()
   end
+
+  def start
+
+
+  end
+
+  def initialize_codemaker
+    @codemaker_instance = CodeMaker.new
+    @code = @codemaker_instance.create_code
+    @code_string = @codemaker_instance.code_string
+  end
+
+  def
 end
