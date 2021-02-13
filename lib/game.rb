@@ -21,5 +21,7 @@ class Game
     @code_string = @codemaker_instance.code_string
   end
 
-  def
+  def initialize_messages
+    @messages = Messages.new
+  end
 end
