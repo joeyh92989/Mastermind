@@ -1,10 +1,11 @@
 class Messages
+
   def initialize
     
   end
 
   def welcome_msg
-    print "\n\n\n Welcome to MASTERMIND\n\n\n Would you like to (p)lay, read the (i)nstructions, or (q)uit?\n\n\n"
+    print "\n\n\n Welcome to MASTERMIND\n\n\n Would you like to (p)lay, read the (i)nstructions, or (q)uit?\n\n\n
   end
 
   def instructions_msg
