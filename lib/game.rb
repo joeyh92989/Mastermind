@@ -25,4 +25,6 @@ class Game
     @messages = Messages.new
   end
 
+  def initialize_code_evaluator
+    @code_evaluator = CodeEvalator.new()
 end
