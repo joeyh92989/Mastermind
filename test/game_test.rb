@@ -3,7 +3,7 @@ require 'minitest/nyan_cat'
 require './lib/game'
 require './lib/messages'
 require './lib/code_maker'
-#require './lib/evaluator'
+require './lib/code_evaluator'
 
 class GameTest < MiniTest::Test
 
@@ -29,5 +29,12 @@ class GameTest < MiniTest::Test
 
 
     assert_equal Messages, game.messages.class
+  end
+
+  def test_can_initialize_code_evaluator
+    game = game.new
+    game.code_evaluator
+
+    assert_equal CodeEvaluator, game.code_evaluator
   end
 end

@@ -24,4 +24,5 @@ class Game
   def initialize_messages
     @messages = Messages.new
   end
+
 end
