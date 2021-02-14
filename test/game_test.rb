@@ -31,10 +31,12 @@ class GameTest < MiniTest::Test
     assert_equal Messages, game.messages.class
   end
 
-  def test_can_initialize_code_evaluator
-    game = game.new
-    game.code_evaluator
+  def test_can_initialize_code_evaluator_with_attributes
+    game = Game.new
+    game.initialize_codemaker
+    game.initialize_code_evaluator
+    require 'pry'; binding.pry
+    assert_equal CodeEvaluator, game.code_evaluator.class
 
-    assert_equal CodeEvaluator, game.code_evaluator
   end
 end

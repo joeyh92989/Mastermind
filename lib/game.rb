@@ -2,10 +2,12 @@ class Game
 
   attr_reader :code,
               :code_string,
-              :messages
+              :messages,
+              :code_evaluator
   def initialize ()
     @messages = ()
     @codemaker_instance = ()
+    @code_evaluator = ()
     @code = []
     @code_string = ()
   end
@@ -26,5 +28,6 @@ class Game
   end
 
   def initialize_code_evaluator
-    @code_evaluator = CodeEvalator.new()
+    @code_evaluator = CodeEvaluator.new(@code,@code_string)
+  end
 end
