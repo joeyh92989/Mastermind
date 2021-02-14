@@ -21,8 +21,15 @@ class CodeEvaluatorTest < MiniTest::Test
   def test_correct_position
     code_evaluator = CodeEvaluator.new(['r','b','y','g'], "rbyg")
     correct_position = ['r','b','y','b']
-    
+
     assert_equal 3, code_evaluator.correct_position(correct_position)
+  end
+
+  def test_correct_inclusion
+    code_evaluator = CodeEvaluator.new(['r','b','y','g'], "rbyg")
+    correct_position = ['r','b','y','b']
+
+    assert_equal 3, code_evaluator.correct_inclusion
   end
 end
 
