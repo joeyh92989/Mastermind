@@ -13,4 +13,9 @@ class CodeEvaluator
     pairs= @code.zip(guess)
     correct_position_count = pairs.select { |pair| pair[0] == pair[1]}.count
   end
+
+  def correct_inclusion(guess)
+    intersect = (@code & guess)
+    intersect.length
+  end
 end
