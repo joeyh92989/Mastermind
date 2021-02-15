@@ -23,7 +23,7 @@ class Game
 
     input = gets.chomp.downcase
 
-    until (input == "p") || (input == "q") || (input == "i")
+    until (input == 'p') || (input == 'q') || (input == 'i')
       puts 'try again'
       input = gets.chomp.downcase
     end
@@ -36,18 +36,18 @@ class Game
       exit!
     end
   end
-end
 
-def initialize_codemaker
-  @codemaker = CodeMaker.new
-  @code = @codemaker.create_code
-  @code_string = @codemaker.code_string
-end
+  def initialize_codemaker
+    @codemaker = CodeMaker.new
+    @code = @codemaker.create_code
+    @code_string = @codemaker.code_string
+  end
 
-def initialize_messages
-  @messages = Messages.new
-end
+  def initialize_messages
+    @messages = Messages.new
+  end
 
-def initialize_code_evaluator
-  @code_evaluator = CodeEvaluator.new(@code, @code_string)
+  def initialize_code_evaluator
+    @code_evaluator = CodeEvaluator.new(@code, @code_string)
+  end
 end
