@@ -35,8 +35,25 @@ class GameTest < MiniTest::Test
     game = Game.new
     game.initialize_codemaker
     game.initialize_code_evaluator
-    require 'pry'; binding.pry
-    assert_equal CodeEvaluator, game.code_evaluator.class
 
+    assert_equal CodeEvaluator, game.code_evaluator.class
+    assert_equal game.code_evaluator.code, game.code
+    assert_equal game.code_evaluator.code_string, game.code_string
   end
+
+  def test_start_method_intiiates_all_neccesary_classes
+    game = Game.new
+    game.start
+
+  assert_equal 4, game.code.length
+  assert_equal game.code.join, game.code_string
+  assert_equal 1, game.turn_counter
+  end
+
+  # def test_start_message_loop
+  #   game = Game.new
+  #   game.start
+  #
+  #   assert_equal
+  # end
 end
