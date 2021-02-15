@@ -20,9 +20,8 @@ class Game
     initialize_code_evaluator
 
     @messages.welcome_msg
-
+    
     input = gets.chomp.downcase
-
     until (input == 'p') || (input == 'q') || (input == 'i')
       puts 'try again'
       input = gets.chomp.downcase
