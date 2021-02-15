@@ -20,8 +20,8 @@ class Messages
     print "\n\n\n Are you sure you want to (q)uit?\n\n\n"
   end
 
-  def cheat_msg#('code_string')
-    print "\n\n\n The computer generated sequence is:\n\n\n#{}\n\n\n Would you like to (p)lay again, read the (i)nstructions or (q)uit?\n\n\n"
+  def cheat_msg(code_string)
+    print "\n\n\n The computer generated sequence is:\n\n\n'#{code_string}'\n\n\n Would you like to (p)lay again, read the (i)nstructions or (q)uit?\n\n\n"
   end
 
   def guess_too_short_msg

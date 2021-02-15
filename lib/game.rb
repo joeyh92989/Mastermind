@@ -57,7 +57,7 @@ class Game
       input = gets.chomp.downcase
     end
       if input == 'c'
-        @messages.cheat_msg#(@code_string)
+        @messages.cheat_msg(@code_string)
       elsif input == 'q'
         start
       elsif input == @code_string
