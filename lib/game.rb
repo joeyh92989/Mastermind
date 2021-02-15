@@ -63,9 +63,9 @@ class Game
       elsif input == @code_string
         win
       else
-        message1=code_validator.code_included(input)
-        message2=code_validator.code_corrected(input)
-        messages.correct_guess_msg(input, message1, message2)
+        message1= @code_evaluator.correct_inclusion(input)
+        message2= @code_evaluator.correct_position(input)
+        messages.feedback_msg(input, message1, message2)
         subsequent_guesses
 	    end
   end

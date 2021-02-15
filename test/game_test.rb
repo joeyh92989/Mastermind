@@ -1,5 +1,5 @@
 require 'minitest/autorun'
-require 'minitest/nyan_cat'
+require 'minitest/pride'
 require './lib/game'
 require './lib/messages'
 require './lib/code_maker'
