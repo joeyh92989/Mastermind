@@ -30,6 +30,14 @@ class Game
 
     if input == 'i'
       @messages.instructions_msg
+      input2 = gets.chomp.downcase
+      until input2 == 's'
+        puts 'try again'
+        input2 = gets.chomp.downcase
+      end
+      if input2 =='s'
+        start
+      end
     elsif input == 'p'
       turn_start
     elsif input == 'q'
