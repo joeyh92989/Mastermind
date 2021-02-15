@@ -20,7 +20,7 @@ class Game
     initialize_code_evaluator
 
     @messages.welcome_msg
-    
+
     input = gets.chomp.downcase
     until (input == 'p') || (input == 'q') || (input == 'i')
       puts 'try again'
@@ -38,10 +38,36 @@ class Game
         start
       end
     elsif input == 'p'
-      turn_start
+      first_turn
     elsif input == 'q'
       exit!
     end
+  end
+
+  def first_turn
+    @messages.start_msg
+    input = gets.chomp.downcase
+    #require 'pry'; binding.pry
+    until (input == 'q') || (input == 'c') || (input.length == 4) do
+      if input.size < 4
+         @messages.guess_too_short_msg
+      else
+        @messages.guess_too_long_message
+      end
+      input = gets.chomp.downcase
+    end
+      if input == 'c'
+        @messages.cheat_msg#(@code_string)
+      elsif input == 'q'
+        start
+      elsif input == @code_string
+        win
+      else
+        message1=code_validator.code_included(input)
+        message2=code_validator.code_corrected(input)
+        messages.correct_guess_msg(input, message1, message2)
+        subsequent_guesses
+	    end
   end
 
   def initialize_codemaker
