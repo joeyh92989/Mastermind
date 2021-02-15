@@ -20,12 +20,8 @@ class Messages
     print "\n\n\n Are you sure you want to (q)uit?\n\n\n"
   end
 
-  def cheat_msg
-    print "\n\n\n Are you sure you want to request a (c)heat? \n\n\n"
-  end
-
-  def cheat_reveal_msg
-    print "\n\n\n The computer generated sequence is:\n\n\n#{}\n\n\n Would you like to (p)lay again, read the (i)nstructions or (q)uit?\n\n\n"
+  def cheat_msg(code_string)
+    print "\n\n\n The computer generated sequence is:\n\n\n'#{code_string}'\n\n\n Would you like to (p)lay again, read the (i)nstructions or (q)uit?\n\n\n"
   end
 
   def guess_too_short_msg
@@ -36,12 +32,12 @@ class Messages
     print "\n\n\n Your guess is too long.\n\n Your guess must be 4 elements.\n\n Each element may be used more than once.\n\n Guess again.\n\n#{}\n\n\n "
   end
 
-  def feedback_msg
-    print "\n\n\n  \n\n\n"
+  def feedback_msg(input, message1, message2)
+    print "\n\n\n #{input} has #{message1} of the correct elements with #{message2} in the correct positions\n You've guessed #{} times \n\n\n "
   end
 
 
   def correct_guess_msg
-    print "\n\n\n #{} has #{} of the correct elements with #{} in the correct positions\n You've guessed #{} times \n\n\n "
+    print "\n\n\n Congratulations! You guessed the sequence \n\n\n '#{input}' \n\n\n in #{} guesses over #{} minutes, #{} seconds. \n\n\n Do you want to (p)lay again or (q)uit? "
   end
 end
