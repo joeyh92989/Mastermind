@@ -47,7 +47,7 @@ class Game
   def first_turn
     @messages.start_msg
     input = gets.chomp.downcase
-    #require 'pry'; binding.pry
+    require 'pry'; binding.pry
     until (input == 'q') || (input == 'c') || (input.length == 4) do
       if input.size < 4
          @messages.guess_too_short_msg
@@ -97,7 +97,21 @@ class Game
         subsequent_guesses
       end
   end
-  
+
+  def win
+    messages.correct_guess_msg(@code_string, @turn_counter)
+    input = gets.chomp.downcase
+    until (input == 'p') || (input == 'q')
+      puts 'try again'
+      input = gets.chomp.downcase
+    end
+    if input == 'p'
+      start
+    elsif input == 'q'
+      exit!
+    end
+  end
+
   def initialize_codemaker
     @codemaker = CodeMaker.new
     @code = @codemaker.create_code
