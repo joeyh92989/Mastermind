@@ -32,8 +32,8 @@ class Messages
     print "\n\n\n Your guess is too long.\n\n Your guess must be 4 elements.\n\n Each element may be used more than once.\n\n Guess again.\n\n#{}\n\n\n "
   end
 
-  def feedback_msg(input, message1, message2)
-    print "\n\n\n #{input} has #{message1} of the correct elements with #{message2} in the correct positions\n You've guessed #{} times \n\n\n "
+  def feedback_msg(input, message1, message2,turn_counter)
+    print "\n\n\n #{input} has #{message1} of the correct elements with #{message2} in the correct positions\n You've guessed #{turn_counter} times \n\n\n "
   end
 
 
