@@ -1,7 +1,7 @@
 require 'minitest/autorun'
 require 'minitest/pride'
-require '/Users/katherinemcconnell/Turing/1module/Mastermind/lib/game.rb'
-require '/Users/katherinemcconnell/Turing/1module/Mastermind/lib/code_evaluator.rb'
+require './lib/game.rb'
+require './lib/code_evaluator.rb'
 
 class CodeEvaluatorTest < MiniTest::Test
 
@@ -21,7 +21,7 @@ class CodeEvaluatorTest < MiniTest::Test
   def test_correct_position
     code_evaluator = CodeEvaluator.new(['r','b','y','g'], "rbyg")
     correct_position = "rbyb"
-
+  require 'pry'; binding.pry
     assert_equal 3, code_evaluator.correct_position(correct_position)
   end
 

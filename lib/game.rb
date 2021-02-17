@@ -5,7 +5,6 @@ class Game
               :code_evaluator,
               :turn_counter,
               :start_time
-
   def initialize
     @messages = ()
     @codemaker = ()
@@ -27,7 +26,7 @@ class Game
 
     input = gets.chomp.downcase
     until (input == 'p') || (input == 'q') || (input == 'i')
-      puts 'try again'
+      puts 'Invalid entry'
       input = gets.chomp.downcase
     end
 
@@ -35,7 +34,7 @@ class Game
       @messages.instructions_msg
       input2 = gets.chomp.downcase
       until input2 == 's'
-        puts 'try again'
+        puts 'Invalid entry'
         input2 = gets.chomp.downcase
       end
       if input2 =='s'
@@ -44,6 +43,7 @@ class Game
     elsif input == 'p'
       first_turn
     elsif input == 'q'
+      #exit is a built in ruby method. The exclamation point doesn't require the user to interact
       exit!
     end
   end
@@ -65,7 +65,7 @@ class Game
     messages.correct_guess_msg(@code_string, @turn_counter,@win_time_minutes,@win_time_seconds)
     input = gets.chomp.downcase
     until (input == 'p') || (input == 'q')
-      puts 'try again'
+      puts 'Invalid entry'
       input = gets.chomp.downcase
     end
     if input == 'p'
@@ -120,6 +120,8 @@ end
   end
 
   def calculate_time_difference
+    # Time is a class built into ruby
+    # Time.at method takes a value input and converts to string based on specified criteria
       time_delta = (Time.now) - @start_time
         converted_time= Time.at(time_delta).utc.strftime("%M:%S").split(":")
         @win_time_minutes = converted_time[0].to_i
