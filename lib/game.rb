@@ -12,10 +12,10 @@ class Game
     @code_evaluator = ()
     @code = []
     @code_string = ()
-    @turn_counter = 1
+    @turn_counter = 0
     @start_time = ()
     @win_time_minutes= ()
-    @@win_time_minutes= ()
+    @win_time_minutes= ()
   end
 
   def start
@@ -52,55 +52,12 @@ class Game
     @messages.start_msg
     input = gets.chomp.downcase
     start_time_create
-    #require 'pry'; binding.pry
-    until (input == 'q') || (input == 'c') || (input.length == 4) do
-      if input.size < 4
-         @messages.guess_too_short_msg
-      else
-        @messages.guess_too_long_message
-      end
-      input = gets.chomp.downcase
-    end
-      if input == 'c'
-        @messages.cheat_msg(@code_string)
-      elsif input == 'q'
-        start
-      elsif input == @code_string
-        win
-      else
-        message1= @code_evaluator.correct_inclusion(input)
-        message2= @code_evaluator.correct_position(input)
-        messages.feedback_msg(input, message1, message2, @turn_counter)
-        subsequent_guesses
-	    end
+    turn(input)
   end
 
   def subsequent_guesses
-
     input = gets.chomp.downcase
-    #require 'pry'; binding.pry
-    until (input == 'q') || (input == 'c') || (input.length == 4) do
-      if input.size < 4
-         @messages.guess_too_short_msg
-      else
-        @messages.guess_too_long_message
-      end
-      input = gets.chomp.downcase
-    end
-      if input == 'c'
-        @messages.cheat_msg(@code_string)
-      elsif input == 'q'
-        start
-      elsif input == @code_string
-        @turn_counter += 1
-        win
-      else
-        @turn_counter += 1
-        message1= @code_evaluator.correct_inclusion(input)
-        message2= @code_evaluator.correct_position(input)
-        messages.feedback_msg(input, message1, message2, @turn_counter)
-        subsequent_guesses
-      end
+    turn(input)
   end
 
   def win
@@ -117,6 +74,32 @@ class Game
       exit!
     end
   end
+
+def turn(input)
+  until (input == 'q') || (input == 'c') || (input.length == 4) do
+    if input.size < 4
+       @messages.guess_too_short_msg
+    else
+      @messages.guess_too_long_message
+    end
+    input = gets.chomp.downcase
+  end
+    if input == 'c'
+      @messages.cheat_msg(@code_string)
+      start
+    elsif input == 'q'
+      start
+    elsif input == @code_string
+      @turn_counter += 1
+      win
+    else
+      @turn_counter += 1
+      message1= @code_evaluator.correct_inclusion(input)
+      message2= @code_evaluator.correct_position(input)
+      messages.feedback_msg(input, message1, message2, @turn_counter)
+      subsequent_guesses
+    end
+end
 
   def initialize_codemaker
     @codemaker = CodeMaker.new

@@ -16,10 +16,6 @@ class Messages
     print "\n\n\n I have generated a beginner sequence with four elements made up of:(r)ed, \n (g)reen, (b)lue, and (y)ellow. Use (q)uit at any time to end the game.\n What's your guess?\n\n\n"
   end
 
-  def quit_msg
-    print "\n\n\n Are you sure you want to (q)uit?\n\n\n"
-  end
-
   def cheat_msg(code_string)
     print "\n\n\n The computer generated sequence is:\n\n\n'#{code_string}'\n\n\n Would you like to (p)lay again, read the (i)nstructions or (q)uit?\n\n\n"
   end
@@ -35,7 +31,6 @@ class Messages
   def feedback_msg(input, message1, message2,turn_counter)
     print "\n\n\n #{input} has #{message1} of the correct elements with #{message2} in the correct positions\n You've guessed #{turn_counter} times \n\n\n "
   end
-
 
   def correct_guess_msg(code_string, turn_counter,win_time_minutes,win_time_seconds)
     print "\n\n\n Congratulations! You guessed the sequence \n\n\n '#{code_string}' \n\n\n in #{turn_counter} guesses over #{win_time_minutes} minutes, #{win_time_seconds} seconds. \n\n\n Do you want to (p)lay again or (q)uit? "
