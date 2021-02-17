@@ -37,7 +37,7 @@ class Messages
   end
 
 
-  def correct_guess_msg(code_string, turn_counter)
-    print "\n\n\n Congratulations! You guessed the sequence \n\n\n '#{code_string}' \n\n\n in #{turn_counter} guesses over #{} minutes, #{} seconds. \n\n\n Do you want to (p)lay again or (q)uit? "
+  def correct_guess_msg(code_string, turn_counter,win_time_minutes,win_time_seconds)
+    print "\n\n\n Congratulations! You guessed the sequence \n\n\n '#{code_string}' \n\n\n in #{turn_counter} guesses over #{win_time_minutes} minutes, #{win_time_seconds} seconds. \n\n\n Do you want to (p)lay again or (q)uit? "
   end
 end

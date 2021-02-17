@@ -41,7 +41,9 @@ class GameTest < MiniTest::Test
     assert_equal game.code_evaluator.code_string, game.code_string
   end
 
-  def test_start_method_intiiates_all_neccesary_classes
+  def
+    skip
+     test_start_method_intiiates_all_neccesary_classes
     game = Game.new
     game.start
 
@@ -50,10 +52,10 @@ class GameTest < MiniTest::Test
   assert_equal 1, game.turn_counter
   end
 
-  # def test_start_message_loop
-  #   game = Game.new
-  #   game.start
-  #
-  #   assert_equal
-  # end
+  def test_can_take_time_at_start
+    game = Game.new
+    game.start_time_create
+
+    assert_equal Time.now, game.start_time
+  end
 end

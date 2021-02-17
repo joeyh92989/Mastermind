@@ -3,7 +3,8 @@ class Game
               :code_string,
               :messages,
               :code_evaluator,
-              :turn_counter
+              :turn_counter,
+              :start_time
 
   def initialize
     @messages = ()
@@ -12,6 +13,9 @@ class Game
     @code = []
     @code_string = ()
     @turn_counter = 1
+    @start_time = ()
+    @win_time_minutes= ()
+    @@win_time_minutes= ()
   end
 
   def start
@@ -47,7 +51,8 @@ class Game
   def first_turn
     @messages.start_msg
     input = gets.chomp.downcase
-    require 'pry'; binding.pry
+    start_time_create
+    #require 'pry'; binding.pry
     until (input == 'q') || (input == 'c') || (input.length == 4) do
       if input.size < 4
          @messages.guess_too_short_msg
@@ -99,7 +104,8 @@ class Game
   end
 
   def win
-    messages.correct_guess_msg(@code_string, @turn_counter)
+    calculate_time_difference
+    messages.correct_guess_msg(@code_string, @turn_counter,@win_time_minutes,@win_time_seconds)
     input = gets.chomp.downcase
     until (input == 'p') || (input == 'q')
       puts 'try again'
@@ -124,5 +130,16 @@ class Game
 
   def initialize_code_evaluator
     @code_evaluator = CodeEvaluator.new(@code, @code_string)
+  end
+
+  def start_time_create
+    @start_time = Time.now
+  end
+
+  def calculate_time_difference
+      time_delta = (Time.now) - @start_time
+        converted_time= Time.at(time_delta).utc.strftime("%M:%S").split(":")
+        @win_time_minutes = converted_time[0].to_i
+        @win_time_seconds = converted_time[1].to_i
   end
 end
