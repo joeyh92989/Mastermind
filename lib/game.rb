@@ -5,17 +5,16 @@ class Game
               :code_evaluator,
               :turn_counter,
               :start_time
-
   def initialize
     @messages = ()
     @codemaker = ()
     @code_evaluator = ()
     @code = []
     @code_string = ()
-    @turn_counter = 1
+    @turn_counter = 0
     @start_time = ()
     @win_time_minutes= ()
-    @@win_time_minutes= ()
+    @win_time_minutes= ()
   end
 
   def start
@@ -27,7 +26,7 @@ class Game
 
     input = gets.chomp.downcase
     until (input == 'p') || (input == 'q') || (input == 'i')
-      puts 'try again'
+      puts "\n\n\n Invalid entry \n\n\n"
       input = gets.chomp.downcase
     end
 
@@ -35,7 +34,7 @@ class Game
       @messages.instructions_msg
       input2 = gets.chomp.downcase
       until input2 == 's'
-        puts 'try again'
+        puts "\n\n\n Invalid entry \n\n\n"
         input2 = gets.chomp.downcase
       end
       if input2 =='s'
@@ -44,6 +43,7 @@ class Game
     elsif input == 'p'
       first_turn
     elsif input == 'q'
+      #exit is a built in ruby method. The exclamation point doesn't require the user to interact
       exit!
     end
   end
@@ -52,55 +52,12 @@ class Game
     @messages.start_msg
     input = gets.chomp.downcase
     start_time_create
-    #require 'pry'; binding.pry
-    until (input == 'q') || (input == 'c') || (input.length == 4) do
-      if input.size < 4
-         @messages.guess_too_short_msg
-      else
-        @messages.guess_too_long_message
-      end
-      input = gets.chomp.downcase
-    end
-      if input == 'c'
-        @messages.cheat_msg(@code_string)
-      elsif input == 'q'
-        start
-      elsif input == @code_string
-        win
-      else
-        message1= @code_evaluator.correct_inclusion(input)
-        message2= @code_evaluator.correct_position(input)
-        messages.feedback_msg(input, message1, message2, @turn_counter)
-        subsequent_guesses
-	    end
+    turn(input)
   end
 
   def subsequent_guesses
-
     input = gets.chomp.downcase
-    #require 'pry'; binding.pry
-    until (input == 'q') || (input == 'c') || (input.length == 4) do
-      if input.size < 4
-         @messages.guess_too_short_msg
-      else
-        @messages.guess_too_long_message
-      end
-      input = gets.chomp.downcase
-    end
-      if input == 'c'
-        @messages.cheat_msg(@code_string)
-      elsif input == 'q'
-        start
-      elsif input == @code_string
-        @turn_counter += 1
-        win
-      else
-        @turn_counter += 1
-        message1= @code_evaluator.correct_inclusion(input)
-        message2= @code_evaluator.correct_position(input)
-        messages.feedback_msg(input, message1, message2, @turn_counter)
-        subsequent_guesses
-      end
+    turn(input)
   end
 
   def win
@@ -108,7 +65,7 @@ class Game
     messages.correct_guess_msg(@code_string, @turn_counter,@win_time_minutes,@win_time_seconds)
     input = gets.chomp.downcase
     until (input == 'p') || (input == 'q')
-      puts 'try again'
+      puts "\n\n\n Invalid entry \n\n\n"
       input = gets.chomp.downcase
     end
     if input == 'p'
@@ -117,6 +74,32 @@ class Game
       exit!
     end
   end
+
+def turn(input)
+  until (input == 'q') || (input == 'c') || (input.length == 4) do
+    if input.size < 4
+       @messages.guess_too_short_msg
+    else
+      @messages.guess_too_long_message
+    end
+    input = gets.chomp.downcase
+  end
+    if input == 'c'
+      @messages.cheat_msg(@code_string)
+      start
+    elsif input == 'q'
+      start
+    elsif input == @code_string
+      @turn_counter += 1
+      win
+    else
+      @turn_counter += 1
+      message1= @code_evaluator.correct_inclusion(input)
+      message2= @code_evaluator.correct_position(input)
+      messages.feedback_msg(input, message1, message2, @turn_counter)
+      subsequent_guesses
+    end
+end
 
   def initialize_codemaker
     @codemaker = CodeMaker.new
@@ -137,6 +120,8 @@ class Game
   end
 
   def calculate_time_difference
+    # Time is a class built into ruby
+    # Time.at method takes a value input and converts to string based on specified criteria
       time_delta = (Time.now) - @start_time
         converted_time= Time.at(time_delta).utc.strftime("%M:%S").split(":")
         @win_time_minutes = converted_time[0].to_i

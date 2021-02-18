@@ -1,5 +1,6 @@
 class CodeEvaluator
-  attr_reader :code, :code_string
+  attr_reader :code,
+              :code_string
 
   def initialize(code, code_string)
     @code = code
@@ -7,8 +8,9 @@ class CodeEvaluator
   end
 
   def correct_position(guess)
-    # code takes in an argument of an array and responds with a intenger of the number of correct postions between the two arrays for purposes of providing a response for messsages
-
+    # Takes an arg (guess) and splits it into an array
+    # it takes the new guess array and creates a nested array pairing each index
+    #then counts the number of arrays that match index 0 and index 1
     guess = guess.split("")
     pairs= @code.zip(guess)
     correct_position_count = pairs.select { |pair| pair[0] == pair[1]}.count
