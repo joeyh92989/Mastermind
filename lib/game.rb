@@ -26,7 +26,7 @@ class Game
 
     input = gets.chomp.downcase
     until (input == 'p') || (input == 'q') || (input == 'i')
-      puts 'Invalid entry'
+      puts "\n\n\n Invalid entry \n\n\n"
       input = gets.chomp.downcase
     end
 
@@ -34,7 +34,7 @@ class Game
       @messages.instructions_msg
       input2 = gets.chomp.downcase
       until input2 == 's'
-        puts 'Invalid entry'
+        puts "\n\n\n Invalid entry \n\n\n"
         input2 = gets.chomp.downcase
       end
       if input2 =='s'
@@ -65,7 +65,7 @@ class Game
     messages.correct_guess_msg(@code_string, @turn_counter,@win_time_minutes,@win_time_seconds)
     input = gets.chomp.downcase
     until (input == 'p') || (input == 'q')
-      puts 'Invalid entry'
+      puts "\n\n\n Invalid entry \n\n\n"
       input = gets.chomp.downcase
     end
     if input == 'p'
